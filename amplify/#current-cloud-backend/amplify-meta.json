@@ -1,0 +1,225 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-nightlineapi-project-2e095-authRole",
+      "UnauthRoleArn": "arn:aws:iam::734660046829:role/amplify-nightlineapi-project-2e095-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::734660046829:role/amplify-nightlineapi-project-2e095-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-nightlineapi-project-2e095-deployment",
+      "UnauthRoleName": "amplify-nightlineapi-project-2e095-unauthRole",
+      "StackName": "amplify-nightlineapi-project-2e095",
+      "StackId": "arn:aws:cloudformation:us-east-2:734660046829:stack/amplify-nightlineapi-project-2e095/9598e2f0-5df9-11f0-8fda-0abea9a3763f",
+      "AmplifyAppId": "d3sguhfoxsf3ar",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-nightlineapi-project-2e095-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
+    }
+  },
+  "api": {
+    "apiREST": {
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "itemsHandler",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "profileHandler",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-nightlineapi-project-2e095-deployment/amplify-cfn-templates/api/apiREST-cloudformation-template.json",
+        "logicalId": "apiapiREST"
+      },
+      "lastPushTimeStamp": "2025-07-23T21:52:49.884Z",
+      "output": {
+        "ApiName": "apiREST",
+        "RootUrl": "https://kwg31mnw36.execute-api.us-east-2.amazonaws.com/project",
+        "ApiId": "kwg31mnw36"
+      },
+      "lastPushDirHash": "mVHP9rHELCXJeFfTfrdnbIty/QU="
+    }
+  },
+  "auth": {
+    "nightlineapi": {
+      "dependsOn": [],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "verificationMechanisms": [
+          "PHONE_NUMBER"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito",
+      "serviceType": "managed",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-nightlineapi-project-2e095-deployment/amplify-cfn-templates/auth/nightlineapi-cloudformation-template.json",
+        "logicalId": "authnightlineapi"
+      },
+      "lastPushTimeStamp": "2025-07-23T21:52:50.296Z",
+      "output": {
+        "UserPoolId": "us-east-2_DEWpYPjXX",
+        "AppClientIDWeb": "122682j636dtdk0ppac1udbpi",
+        "AppClientID": "14goqv4f25fph41p5uk6m513ql",
+        "IdentityPoolId": "us-east-2:a23f5ea1-c381-4966-a2e3-b53dc3866d35",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-2:734660046829:userpool/us-east-2_DEWpYPjXX",
+        "IdentityPoolName": "nightlineapi_identitypool_75fe90cc__project",
+        "UserPoolName": "nightlineapi_userpool_75fe90cc",
+        "CreatedSNSRole": "arn:aws:iam::734660046829:role/sns75fe90cc2e095-project"
+      },
+      "lastPushDirHash": "47DIZN0TtMF+3xZuDPneKegV6Bg=",
+      "customAuth": false
+    },
+    "userPoolGroups": {
+      "service": "Cognito-UserPool-Groups",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "nightlineapi",
+          "attributes": [
+            "UserPoolId",
+            "AppClientIDWeb",
+            "AppClientID",
+            "IdentityPoolId"
+          ]
+        }
+      ],
+      "lastPushTimeStamp": "2025-07-23T21:52:50.296Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-nightlineapi-project-2e095-deployment/amplify-cfn-templates/auth/userPoolGroups-cloudformation-template.json",
+        "logicalId": "authuserPoolGroups"
+      },
+      "output": {
+        "profileUsersGroupRole": "arn:aws:iam::734660046829:role/us-east-2_DEWpYPjXX-profileUsersGroupRole"
+      },
+      "lastPushDirHash": "XXg3zU43yYTGavH5MmPnH/j874M="
+    }
+  },
+  "function": {
+    "itemsHandler": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "lastBuildTimeStamp": "2025-07-11T01:54:13.977Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2025-07-11T01:54:14.650Z",
+      "distZipFilename": "itemsHandler-685268615a5655494868-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-nightlineapi-project-2e095-deployment",
+        "s3Key": "amplify-builds/itemsHandler-685268615a5655494868-build.zip"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-nightlineapi-project-2e095-deployment/amplify-cfn-templates/function/itemsHandler-cloudformation-template.json",
+        "logicalId": "functionitemsHandler"
+      },
+      "lastPushTimeStamp": "2025-07-23T21:52:49.888Z",
+      "output": {
+        "LambdaExecutionRoleArn": "arn:aws:iam::734660046829:role/nightlineapiLambdaRole3483bf91-project",
+        "Region": "us-east-2",
+        "Arn": "arn:aws:lambda:us-east-2:734660046829:function:itemsHandler-project",
+        "Name": "itemsHandler-project",
+        "LambdaExecutionRole": "nightlineapiLambdaRole3483bf91-project"
+      },
+      "lastPushDirHash": "hGX/xDTe02p8MB+CApUm7nDofN0="
+    },
+    "profileHandler": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "storage",
+          "resourceName": "profile",
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "attributeEnvMap": {
+            "Name": "TABLE_NAME",
+            "Arn": "TABLE_ARN"
+          }
+        }
+      ],
+      "lastBuildTimeStamp": "2025-07-15T17:57:05.258Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2025-07-15T17:57:06.083Z",
+      "distZipFilename": "profileHandler-52724978533857302b72-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-nightlineapi-project-2e095-deployment",
+        "s3Key": "amplify-builds/profileHandler-52724978533857302b72-build.zip"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-nightlineapi-project-2e095-deployment/amplify-cfn-templates/function/profileHandler-cloudformation-template.json",
+        "logicalId": "functionprofileHandler"
+      },
+      "lastPushTimeStamp": "2025-07-23T21:52:49.889Z",
+      "output": {
+        "LambdaExecutionRoleArn": "arn:aws:iam::734660046829:role/nightlineapiLambdaRolebe8671ed-project",
+        "Region": "us-east-2",
+        "Arn": "arn:aws:lambda:us-east-2:734660046829:function:profileHandler-project",
+        "Name": "profileHandler-project",
+        "LambdaExecutionRole": "nightlineapiLambdaRolebe8671ed-project"
+      },
+      "lastPushDirHash": "yuFGm+D+fQ1yCEN/eFmDXGti730="
+    }
+  },
+  "storage": {
+    "profiles": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-nightlineapi-project-2e095-deployment/amplify-cfn-templates/storage/profiles-cloudformation-template.json",
+        "logicalId": "storageprofiles"
+      },
+      "lastPushTimeStamp": "2025-07-23T21:52:49.891Z",
+      "output": {
+        "PartitionKeyName": "username",
+        "Region": "us-east-2",
+        "Arn": "arn:aws:dynamodb:us-east-2:734660046829:table/profiles-project",
+        "StreamArn": "arn:aws:dynamodb:us-east-2:734660046829:table/profiles-project/stream/2025-07-11T01:54:22.016",
+        "PartitionKeyType": "S",
+        "Name": "profiles-project"
+      },
+      "lastPushDirHash": "XhgYE8+7lqVi5bR2p01hgHCtAvE="
+    },
+    "profile": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-nightlineapi-project-2e095-deployment/amplify-cfn-templates/storage/profile-cloudformation-template.json",
+        "logicalId": "storageprofile"
+      },
+      "lastPushTimeStamp": "2025-07-23T21:52:49.892Z",
+      "output": {
+        "PartitionKeyName": "id",
+        "Region": "us-east-2",
+        "Arn": "arn:aws:dynamodb:us-east-2:734660046829:table/profile-project",
+        "StreamArn": "arn:aws:dynamodb:us-east-2:734660046829:table/profile-project/stream/2025-07-15T17:49:47.081",
+        "PartitionKeyType": "S",
+        "Name": "profile-project"
+      },
+      "lastPushDirHash": "awHdqfHBaCT5J7FhVahdEFpRWrk="
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "paths": {
+    "/items": {
+      "name": "/items",
+      "lambdaFunction": "itemsHandler",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create",
+          "read",
+          "update",
+          "delete"
+        ]
+      }
+    },
+    "/profile": {
+      "name": "/profile",
+      "lambdaFunction": "profileHandler",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "read",
+          "update"
+        ]
+      }
+    }
+  }
+}
