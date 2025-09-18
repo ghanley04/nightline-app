@@ -11,7 +11,8 @@ import config from '../aws-exports';
 import { View, Text, Button } from 'react-native';
 import WelcomeScreen from "./index";
 // import { AuthProvider, useAuth } from "react-oidc-context";
-import { AuthProvider, useAuth } from "../assets/AuthContext"; // the AuthProvider we built
+// import { AuthProvider, useAuth } from "../assets/AuthContext"; // the AuthProvider we built
+import { Authenticator } from '@aws-amplify/ui-react-native';
 
 
 // export const unstable_settings = {
@@ -74,9 +75,9 @@ export default function RootLayout() {
   }
 
   return (
-    <AuthProvider {...cognitoAuthConfig}>
-      <LayoutContent /> {/*  //wrap in suspense? */}
-    </AuthProvider>
+    // <AuthProvider {...cognitoAuthConfig}>
+      <LayoutContent /> 
+    // </AuthProvider>
   );
 }
 // export default function RootLayout() {
@@ -142,16 +143,16 @@ export default function RootLayout() {
 
 function LayoutContent() {
  const router = useRouter();
-  const { user } = useAuth();
+  // const { user } = useAuth();
 
-  useEffect(() => {
-    // When auth state changes, redirect accordingly
-    if (user) {
-      router.replace("/(tabs)"); // user is logged in
-    } else {
-      router.replace("/"); // user not logged in
-    }
-  }, [user]);
+  // useEffect(() => {
+  //   // When auth state changes, redirect accordingly
+  //   if (user) {
+  //     router.replace("/(tabs)"); // user is logged in
+  //   } else {
+  //     router.replace("/"); // user not logged in
+  //   }
+  // }, [user]);
 
   return (
     <Stack screenOptions={{ headerShown: false }}>
